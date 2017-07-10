@@ -1,0 +1,498 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css?family=PT+Sans");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+/* Don't kill focus outline for keyboard users: http://24ways.org/2009/dont-lose-your-focus */
+a:hover, a:active {
+  outline: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.slider-wrapper {
+  width: 100%;
+  background: #ffbb02;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 45px; }
+
+.slider {
+  position: relative;
+  width: 970px;
+  height: 550px;
+  margin: 0 auto;
+  overflow: hidden;
+  display: inline-block; }
+
+.slider_list {
+  padding: 0;
+  position: relative;
+  width: 100%;
+  list-style-type: none; }
+
+.slider_item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 100%;
+  opacity: 0; }
+
+.slider_item img {
+  height: 100%;
+  width: 100%;
+  display: block; }
+
+.slider_item.active {
+  z-index: 1;
+  position: relative;
+  opacity: 1; }
+
+.slider_item.inslide {
+  z-index: 2;
+  opacity: 1; }
+
+.slider_dots {
+  bottom: 0px;
+  position: absolute;
+  width: auto;
+  left: 45%;
+  list-style-type: none;
+  padding: 0;
+  z-index: 3; }
+
+.slider_dots-item {
+  width: 15px;
+  height: 15px;
+  background: #000;
+  display: inline-block;
+  margin-right: 15px;
+  cursor: pointer; }
+
+.slider_dots-item.active {
+  background: #fff; }
+
+.slider_controls-button {
+  position: absolute;
+  top: 50%;
+  display: block;
+  z-index: 3;
+  font-size: 50px;
+  height: 30px;
+  width: 30px;
+  text-align: center; }
+
+.slider_controls-button_next {
+  background: url(../img/controller-next.jpg);
+  right: 0; }
+
+.slider_controls-button_prev {
+  background: url(../img/controller-prev.jpg);
+  left: 0px; }
+
+.container {
+  margin: 0 auto;
+  width: 200px; }
+
+.acordoin {
+  list-style-type: none;
+  font-size: 24px; }
+
+.acordion__item {
+  font-size: 24px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  cursor: pointer;
+  list-style-type: none;
+  background: url(../img/arrow-bottom.png);
+  background-repeat: no-repeat;
+  background-position: 571px 12px; }
+
+.acordion__item.Active {
+  background: url(../img/arrow-up.png);
+  background-repeat: no-repeat;
+  background-position: 571px 12px; }
+
+.acordion__item-header {
+  padding: 15px;
+  border-top: 2px solid #cdcdcd;
+  border-bottom: 2px solid #cdcdcd;
+  -webkit-box-shadow: 0px 2px 6px 1px rgba(176, 176, 176, 0.69);
+  box-shadow: 0px 2px 6px 1px rgba(176, 176, 176, 0.69); }
+
+.acordion__inner-link {
+  font-size: 16px;
+  display: none;
+  margin-top: 15px; }
+
+.acordion__inner-link:last-child {
+  margin-bottom: 30px; }
+
+/* Скрываем реальный чекбокс */
+.acordion__inner-checkbox {
+  display: none; }
+
+/* Задаем внешний вид для нашего кастомного чекбокса. Все обязательные свойства прокомментированы, остальные же свойства меняйте по вашему усмотрению */
+.acordion__inner-checkbox-custom {
+  position: relative;
+  /* Обязательно задаем, чтобы мы могли абсолютным образом позиционировать псевдоэлемент внютри нашего кастомного чекбокса */
+  width: 26px;
+  /* Обязательно задаем ширину */
+  height: 26px;
+  /* Обязательно задаем высоту */
+  border: 2px solid #000; }
+
+/* Кастомный чекбокс и лейбл центрируем по вертикали. Если вам это не требуется, то вы можете убрать свойство vertical-align: middle из данного правила, но свойство display: inline-block обязательно должно быть */
+.acordion__inner-checkbox-custom,
+.acordion__inner-checkbox-label {
+  display: inline-block;
+  vertical-align: middle; }
+
+/* Если реальный чекбокс у нас отмечен, то тогда добавляем данный признак и к нашему кастомному чекбоксу  */
+.acordion__inner-checkbox:checked + .acordion__inner-checkbox-custom::before {
+  content: "";
+  /* Добавляем наш псевдоэлемент */
+  display: block;
+  /* Делаем его блочным элементом */
+  position: absolute;
+  /* Позиционируем его абсолютным образом */
+  /* Задаем расстояние от верхней, правой, нижней и левой границы */
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  background: #000;
+  /* Добавляем фон. Если требуется, можете поставить сюда картинку в виде "галочки", которая будет символизировать, что чекбокс отмечен */
+  -webkit-border-radius: 2px;
+          border-radius: 2px; }
+
+.wrap {
+  font-family: 'PT Sans', sans-serif; }
+
+.header {
+  background: #ffbb02;
+  height: 150px; }
+  .header .header-blackLine {
+    height: 10px;
+    width: 100%;
+    background-color: #000; }
+  .header .header-contacts {
+    height: 90px;
+    width: 950px;
+    padding: 0 10px;
+    margin: 0 auto;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+    .header .header-contacts .header-contacts-left {
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      width: 350px; }
+      .header .header-contacts .header-contacts-left p {
+        line-height: 24px;
+        font-weight: bold;
+        font-size: 14px; }
+    .header .header-contacts .header-contacts-right {
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-align: end;
+      -webkit-align-items: flex-end;
+          -ms-flex-align: end;
+              align-items: flex-end;
+      line-height: 18px; }
+
+.header-nav-wrap {
+  height: 50px;
+  width: 100%;
+  background-color: #fff; }
+  .header-nav-wrap .header-nav {
+    width: 950px;
+    padding: 0 10px;
+    margin: 0 auto;
+    height: 50px;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .header-nav-wrap .header-nav img {
+      height: 33px;
+      margin-right: 50px; }
+    .header-nav-wrap .header-nav .header-nav-item {
+      display: inline-block;
+      margin: 0 20px; }
+
+.technics {
+  margin: 0 auto;
+  width: 940px;
+  min-height: 490px;
+  padding: 0 15px;
+  font-family: 'PT Sans', sans-serif; }
+  .technics .technics-links .technics-links-item {
+    color: #ffb802;
+    font-size: 12px; }
+  .technics .technics-links .technics-links-item.active {
+    color: #000; }
+  .technics .technics-content {
+    margin-top: 60px;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+    .technics .technics-content .technics-content-img {
+      width: 293px;
+      height: 293px; }
+    .technics .technics-content .technics-content-right {
+      width: 615px; }
+      .technics .technics-content .technics-content-right .technics-content-right-model {
+        font-size: 20px;
+        margin-bottom: 40px; }
+      .technics .technics-content .technics-content-right .technics-content-right-form-sum, .technics .technics-content .technics-content-right .technics-content-right-form-rub {
+        font-weight: bold;
+        font-size: 24px;
+        margin-top: 25px;
+        display: inline-block; }
+      .technics .technics-content .technics-content-right input[type="submit"] {
+        background: -webkit-gradient(linear, left bottom, left top, from(#fab700), to(#fdce03));
+        background: -webkit-linear-gradient(bottom, #fab700, #fdce03);
+        background: -o-linear-gradient(bottom, #fab700, #fdce03);
+        background: linear-gradient(to top, #fab700, #fdce03);
+        border: 1px solid #fab500;
+        width: 130px;
+        height: 30px;
+        margin-left: 65px; }
+
+.hr {
+  width: 940px;
+  height: 2px;
+  background: #818180;
+  margin: 0 auto;
+  margin-top: 45px; }
+
+.servises-title {
+  margin: 0 auto;
+  font-weight: bold;
+  width: 110px;
+  font-size: 24px; }
+
+.servises-wrap {
+  width: 100%;
+  height: 500px;
+  background: #ffbb02; }
+  .servises-wrap .servises {
+    width: 940px;
+    padding: 0 15px;
+    margin: 0 auto;
+    height: 500px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+    .servises-wrap .servises .servises-block {
+      height: 164px;
+      width: 455px;
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin-top: 50px; }
+      .servises-wrap .servises .servises-block .servises-block-text {
+        margin-left: 50px;
+        width: 240px; }
+        .servises-wrap .servises .servises-block .servises-block-text h3 {
+          font-weight: bold;
+          font-size: 20px;
+          display: inline-block; }
+        .servises-wrap .servises .servises-block .servises-block-text p {
+          line-height: 24px;
+          font-size: 14px;
+          display: inline-block; }
+
+.taskManager {
+  width: 940px;
+  padding: 0 15px;
+  margin: 0 auto;
+  margin-top: 50px; }
+  .taskManager h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px; }
+  .taskManager .taskManager-task {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px; }
+    .taskManager .taskManager-task .taskManager-taks-del {
+      margin-left: 25px;
+      cursor: pointer; }
+    .taskManager .taskManager-task .taskManager-task-edit {
+      cursor: pointer;
+      margin-left: 40px; }
+    .taskManager .taskManager-task .taskManager-task-edit-enter {
+      margin-left: 40px;
+      cursor: pointer; }
+  .taskManager .taskManager-newTask input {
+    width: 535px;
+    height: 40px;
+    -webkit-border-radius: 10px;
+            border-radius: 10px;
+    margin-bottom: 100px; }
+  .taskManager .taskManager-newTask .taskManager-newTask-enter {
+    margin-left: 20px;
+    cursor: pointer; }
+  .taskManager .taskManager-newTask .taskManager-newTask-clear {
+    margin-left: 20px;
+    cursor: pointer; }
+
+.googleMap {
+  min-width: 970px; }
+
+.footer-wrap {
+  width: 100%;
+  min-width: 970px;
+  background: #000; }
+
+.footer {
+  margin: 0 auto;
+  width: 940px;
+  padding: 0 15px;
+  height: 110px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .footer .footer-nav ul {
+    line-height: 30px;
+    width: 550px; }
+    .footer .footer-nav ul li {
+      display: inline-block;
+      margin-right: 30px; }
+      .footer .footer-nav ul li a {
+        color: #818180;
+        text-decoration: none;
+        padding-left: 15px; }
+      .footer .footer-nav ul li a.active {
+        background-image: url(../img/footer-bg-list.png);
+        background-repeat: no-repeat;
+        background-position: 0 5px;
+        color: #d3d3d3; }
+  .footer .footer-copyRight p {
+    color: #d3d3d3; }
+  .footer .footer-copyRight img {
+    margin-top: 25px;
+    margin-left: 10px; }
+  .footer .footer-copyRight a {
+    color: #d3d3d3;
+    vertical-align: super;
+    margin-left: 20px; }

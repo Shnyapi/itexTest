@@ -95,7 +95,7 @@ table {
   opacity: 1; }
 
 .slider_dots {
-  bottom: 0px;
+  bottom: 10px;
   position: absolute;
   width: auto;
   left: 45%;
@@ -305,7 +305,12 @@ table {
       margin-right: 50px; }
     .header-nav-wrap .header-nav .header-nav-item {
       display: inline-block;
-      margin: 0 20px; }
+      margin: 0 20px;
+      color: #818180;
+      text-decoration: none;
+      cursor: pointer; }
+    .header-nav-wrap .header-nav .header-nav-item.active {
+      color: #000; }
 
 .technics {
   margin: 0 auto;
@@ -315,7 +320,8 @@ table {
   font-family: 'PT Sans', sans-serif; }
   .technics .technics-links .technics-links-item {
     color: #ffb802;
-    font-size: 12px; }
+    font-size: 12px;
+    text-decoration: none; }
   .technics .technics-links .technics-links-item.active {
     color: #000; }
   .technics .technics-content {
@@ -355,20 +361,24 @@ table {
         border: 1px solid #fab500;
         width: 130px;
         height: 30px;
-        margin-left: 65px; }
+        margin-left: 65px;
+        text-decoration: underline;
+        cursor: pointer; }
 
 .hr {
   width: 940px;
   height: 2px;
   background: #818180;
   margin: 0 auto;
-  margin-top: 45px; }
+  margin-top: 45px;
+  margin-bottom: 45px; }
 
 .servises-title {
   margin: 0 auto;
   font-weight: bold;
   width: 110px;
-  font-size: 24px; }
+  font-size: 24px;
+  margin-bottom: 20px; }
 
 .servises-wrap {
   width: 100%;

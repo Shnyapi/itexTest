@@ -69,7 +69,8 @@ table {
 .slider_list {
   padding: 0;
   position: relative;
-  width: 100%;
+  width: 970px;
+  height: 550px;
   list-style-type: none; }
 
 .slider_item {
